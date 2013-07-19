@@ -54,11 +54,13 @@
         "src/common/CoordinateGrid.js",
         "src/common/HoverListener.js",
         "src/common/HorizontalPositionCache.js",
+        "src/common/timeline.js",
         "src/outro.js"
       ],
       "styles": [
         "src/main.css",
         "src/common/common.css",
+        "src/common/timeline.css",
         "src/basic/basic.css",
         "src/agenda/agenda.css"
       ]

@@ -1,7 +1,5 @@
 fcViews.agenda = AgendaListView;
 
-var AGENDA_LIST_LIMIT = 30;
-
 function AgendaListView(element, calendar) {
     var t = this;
 
@@ -22,14 +20,14 @@ function AgendaListView(element, calendar) {
         var start = cloneDate(date, true);
         var end = addDays(cloneDate(start, true), 1);
         var visStart = cloneDate(start, true);
-        var visEnd =  addDays(cloneDate(end, true), AGENDA_LIST_LIMIT);
+        var visEnd =  addDays(cloneDate(end, true), opt('agendaListLimit'));
 
         t.title = formatDate(start, opt('titleFormat'));
         t.start = start;
         t.end = end;
         t.visStart = visStart;
         t.visEnd = visEnd;
-        renderList(AGENDA_LIST_LIMIT);
+        renderList(opt('agendaListLimit'));
     }
 }
 
@@ -115,7 +113,7 @@ function AgendaList(element, calendar, viewName) {
 
     function renderList(maxr) {
 
-        rowCnt = AGENDA_LIST_LIMIT;
+        rowCnt = opt('agendaListLimit');
         colCnt = 1;
 
         updateOptions();
@@ -311,8 +309,8 @@ function AgendaList(element, calendar, viewName) {
 
 
     function dayBind(days) {
-        days.click(dayClick)
-            .mousedown(daySelectionMousedown);
+        /*days.click(dayClick)
+            .mousedown(daySelectionMousedown);*/
     }
 
 

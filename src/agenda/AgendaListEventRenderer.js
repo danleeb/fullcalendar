@@ -83,12 +83,12 @@ function AgendaListEventRenderer() {
 
 
     function bindDaySeg(event, eventElement, seg) {
-        if (isEventDraggable(event)) {
+        /*if (isEventDraggable(event)) {
             draggableDayEvent(event, eventElement);
         }
         if (seg.isEnd && isEventResizable(event)) {
             resizableDayEvent(event, eventElement, seg);
-        }
+        }*/
         eventElementHandlers(event, eventElement);
         // needs to be after, because resizableDayEvent might stopImmediatePropagation on click
     }
@@ -278,6 +278,7 @@ function AgendaListViewEventRenderer() {
         var left;
         var right;
         var skinCss;
+        var skinCssAttr;
         var html = '';
 
         var rowPointer = 0;
@@ -316,7 +317,7 @@ function AgendaListViewEventRenderer() {
             }
 
             var today = clearTime(new Date());
-            var eventDay = clearTime(seg.start);
+            var eventDay = cloneDate(seg.start, true);
             var todayClass = (+today == +eventDay) ? " fc-state-highlight fc-today" : ""; //fc-state-highlight fc-today
 
             var dateFormatText = "";
@@ -337,7 +338,7 @@ function AgendaListViewEventRenderer() {
                 html += "<span class='fc-event-time-seg'>" + htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +"</span>";
             }
             else {
-                html += "<span class='fc-event-time-seg'>All day</span>";
+                html += "<span class='fc-event-time-seg'>" + opt('allDayAgendaText') + "</span>";
             }
             html += "</td>";
 
@@ -346,10 +347,11 @@ function AgendaListViewEventRenderer() {
             if (event.source) { classes = classes.concat(event.source.className || []); }
             url = event.url;
             skinCss = getSkinCss(event, opt);
+            skinCssAttr = (skinCss ? " style='" + skinCss + "'" : '');
 
             html += "<td style=''>";
             html += "<span class='fc-event-title'> " +
-                        (url ? ("<a href='" + htmlEscape(url) + "'") : "<span") +
+                        (url ? ("<a href='" + htmlEscape(url) + "'") : "<span") + skinCssAttr +
                         " class='" + classes.join(' ') + "'>" +
                         htmlEscape(event.title) +
                         "</" + (url ? "a" : "span" ) + ">" +
@@ -419,6 +421,7 @@ function AgendaListViewEventRenderer() {
         var seg;
         var element;
         var event;
+        var lazy = false;
         // retrieve elements, run through eventRender callback, bind handlers
         for (i=0; i<segCnt; i++) {
             seg = segs[i];
@@ -429,10 +432,13 @@ function AgendaListViewEventRenderer() {
                     bindDaySeg(event, element, seg);
                 }else if (element[0] != undefined) {
                     element[0]._fci = i; // for lazySegBind
+                    lazy = true;
                 }
             }
         }
-        //lazySegBind(segmentContainer, segs, bindDaySeg);
+        if (lazy) {
+            lazySegBind(segmentContainer, segs, bindDaySeg);
+        }
     }
 
 
