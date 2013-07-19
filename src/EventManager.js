@@ -40,6 +40,7 @@ function EventManager(options, _sources) {
 	var pendingSourceCnt = 0;
 	var loadingLevel = 0;
 	var cache = [];
+	var fetchData;
 	
 	
 	for (var i=0; i<_sources.length; i++) {
@@ -57,9 +58,10 @@ function EventManager(options, _sources) {
 	}
 	
 	
-	function fetchEvents(start, end) {
+	function fetchEvents(start, end, data) {
 		rangeStart = start;
 		rangeEnd = end;
+		fetchData = data || {};
 		cache = [];
 		var fetchID = ++currentFetchID;
 		var len = sources.length;
@@ -144,6 +146,9 @@ function EventManager(options, _sources) {
 				}
 				if (endParam) {
 					data[endParam] = Math.round(+rangeEnd / 1000);
+				}
+				if (fetchData) {
+					$.extend(data, fetchData);
 				}
 				pushLoading();
 				$.ajax($.extend({}, ajaxDefaults, source, {

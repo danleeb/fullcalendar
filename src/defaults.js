@@ -55,6 +55,8 @@ var defaults = {
 	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
     allDayAgendaText: 'All day',
     agendaListLimit: 30,
+    tasksTitle: 'Tasks',
+    tasksListLimit: 100,
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
@@ -64,7 +66,8 @@ var defaults = {
 		month: 'month',
 		week: 'week',
 		day: 'day',
-        agenda: 'agenda'
+        agenda: 'agenda',
+        tasks: 'tasks'
 	},
 	
 	// jquery-ui theming

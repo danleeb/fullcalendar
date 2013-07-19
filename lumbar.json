@@ -47,6 +47,8 @@
         "src/agenda/AgendaEventRenderer.js",
         "src/agenda/AgendaListView.js",
         "src/agenda/AgendaListEventRenderer.js",
+        "src/tasks/TasksView.js",
+        "src/tasks/TasksEventRenderer.js",
         "src/common/View.js",
         "src/common/DayEventRenderer.js",
         "src/common/SelectionManager.js",
@@ -62,7 +64,8 @@
         "src/common/common.css",
         "src/common/timeline.css",
         "src/basic/basic.css",
-        "src/agenda/agenda.css"
+        "src/agenda/agenda.css",
+        "src/tasks/tasks.css"
       ]
     },
     "fullcalendar.print": {
