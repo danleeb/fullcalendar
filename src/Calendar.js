@@ -232,6 +232,10 @@ function Calendar(element, options, eventSources) {
 			}
 			
 			ignoreWindowResize--;
+            
+            if (t.option("timeline")) {
+                timeline(currentView);
+            }
 			currentView.trigger('viewDisplay', _element);
 		}
 	}
