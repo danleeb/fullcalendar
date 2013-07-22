@@ -65,6 +65,7 @@
         "src/common/timeline.css",
         "src/basic/basic.css",
         "src/agenda/agenda.css",
+        "src/agenda/agendaList.css",
         "src/tasks/tasks.css"
       ]
     },
