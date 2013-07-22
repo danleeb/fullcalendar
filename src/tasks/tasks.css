@@ -2,39 +2,92 @@
 /* Tasks View
 ------------------------------------------------------------------------*/
 
-.fc-tasks-list-container {
-	width:100%;
-	padding-bottom:5px;
+.fc-view-tasks {
 }
 
-.fc-tasks-list-container th {
-    font-weight: bold;
-    font-size:12px;
-    width:100px;
-    padding: 0px 0 0 5px;
+.fc-tasks-actions {
+	position:absolute;
+	left:0;
+	top:-42px;
+	width:160px;
+	height:42px;
+	background:#fff;
+}
+.fc-tasks-select-actions {
+	visibility:hidden;
+}
+.fc-tasks-select-actions-active {
+	visibility:visible;
+}
+.fc-tasks-select-actions span {
+	display:inline-block;
+	padding:3px 5px;
+	cursor:pointer;
+	margin-right:10px;
+	margin-bottom:5px;
+	background:#eee;
+	color:#777;
+	border-radius:4px;
+}
+.fc-tasks-select-actions span:hover {
+	background:#ddd;
+	color:#777;
+}
+
+.fc-tasks-container {
+	overflow-y:auto;
+}
+
+.fc-tasks-list-container {
+	width:100%;
+	margin-top:0;
+	padding-left:0;
+	padding-bottom:5px;
+	list-style:none;
+}
+
+.fc-tasks-list-container li {
+	border-radius:3px;
+	padding:3px 0px;
+	border-top:1px solid #eee;
+}
+.fc-tasks-list-container li > span {
 }
 
 .fc-tasks-list-container td {
-    font-weight: normal;
+    font-weight:normal;
 }
 
 .fc-tasks-list-container a {
-    text-decoration: none;
+    text-decoration:none;
 }
 
 .fc-tasks-list-container a:hover {
-    text-decoration: underline;
+    text-decoration:underline;
 }
 
-.fc-task {
+.fc-task-title {
     cursor:pointer;
 }
 
+.fc-task-indent { display:inline-block; width:30px; }
 .fc-task-checkbox { width:10px; }
-.fc-task-date { max-width:200px; }
+.fc-task-date { float:right; max-width:200px; padding:2px 10px; }
+
+.fc-task-done {
+    text-decoration:line-through;
+    opacity:0.6;
+}
+.fc-task-canceled {
+    text-decoration:line-through;
+    opacity:0.4;
+}
 
 .fc-tasks-list-container .fc-event-skin {
-    color: #36c;
-    border-color: white;
-    background-color: white;
+    color:#36c;
+    border-color:white;
+    background-color:transparent;
 }
+
+.fc-tasks-list-container .ui-sortable-helper .fc-task-checkbox,
+.fc-tasks-list-container .ui-sortable-helper .fc-task-date { display:none; }

@@ -53,10 +53,7 @@ var defaults = {
 	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
 	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
 	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
-    allDayAgendaText: 'All day',
-    agendaListLimit: 30,
-    tasksTitle: 'Tasks',
-    tasksListLimit: 100,
+
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
@@ -69,6 +66,26 @@ var defaults = {
         agenda: 'agenda',
         tasks: 'tasks'
 	},
+
+	// agenda view
+    allDayAgendaText: 'All day',
+    agendaListLimit: 30,
+
+	// task view
+    tasksTitle: 'Tasks',
+    tasksCanceled: '[canceled]',
+    tasksListLimit: 100,
+    tasksMaxIndent: 5,
+    taskSelectActionsText: {
+    	tasks: {
+    		unselect: '<input type="checkbox" checked="checked"/>',
+    		indentSub: '<span>&larr;</span>',
+    		indentAdd: '<span>&rarr;</span>',
+    		open: '<span>Open</span>',
+    		done: '<span>Done</span>',
+    		cancel: '<span>Cancel</span>'
+    	}
+    },
 	
 	// jquery-ui theming
 	theme: false,
