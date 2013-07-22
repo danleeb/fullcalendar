@@ -1,3 +1,40 @@
 
 /* Tasks View
 ------------------------------------------------------------------------*/
+
+.fc-tasks-list-container {
+	width:100%;
+	padding-bottom:5px;
+}
+
+.fc-tasks-list-container th {
+    font-weight: bold;
+    font-size:12px;
+    width:100px;
+    padding: 0px 0 0 5px;
+}
+
+.fc-tasks-list-container td {
+    font-weight: normal;
+}
+
+.fc-tasks-list-container a {
+    text-decoration: none;
+}
+
+.fc-tasks-list-container a:hover {
+    text-decoration: underline;
+}
+
+.fc-task {
+    cursor:pointer;
+}
+
+.fc-task-checkbox { width:10px; }
+.fc-task-date { max-width:200px; }
+
+.fc-tasks-list-container .fc-event-skin {
+    color: #36c;
+    border-color: white;
+    background-color: white;
+}

@@ -79,7 +79,16 @@
 					title: 'Task 1',
 					type: 'task'
 				},
-			]
+				{
+					title: 'Task Starttime',
+					type: 'task',
+					start: new Date(y, m, d, 14, 35),
+					allDay: false,
+				},
+			],
+			eventClick: function(event, jsEvent, view) {
+				alert(view.name + ': ' + event.title);
+			}
 		});
 		
 	});
