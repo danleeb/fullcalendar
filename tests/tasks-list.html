@@ -85,7 +85,7 @@
 					title: 'Task with start time',
 					type: 'task',
 					start: new Date(y, m, d, 14, 35),
-					allDay: false,
+					allDay: true,
 					position: 1
 				},
 				{
@@ -112,10 +112,10 @@
 					indent: 1
 				},
 				{
-					title: 'Task (done + canceled)',
+					title: 'Task (canceled - invisible)',
 					type: 'task',
 					start: new Date(y, m, d, 14, 35),
-					done: true,
+					done: false,
 					canceled: true,
 					position: 5
 				},
@@ -124,205 +124,7 @@
 					url: 'http://google.com/',
 					type: 'task',
 					position: 6
-				},
-
-
-
-
-
-
-
-
-				{
-					title: 'Simple task',
-					type: 'task',
-					position: 0
-				},
-				{
-					title: 'Task with start time',
-					type: 'task',
-					allDay: false,
-					position: 1
-				},
-				{
-					title: 'Task (done)',
-					type: 'task',
-					done: true,
-					position: 2
-				},
-				{
-					title: 'Task (done) with start time / allday',
-					type: 'task',
-					allDay: true,
-					done: true,
-					position: 3
-				},
-				{
-					title: 'Task (canceled)',
-					type: 'task',
-					canceled: true,
-					position: 4
-				},
-				{
-					title: 'Task (done + canceled)',
-					type: 'task',
-					done: true,
-					canceled: true,
-					position: 5
-				},
-				{
-					title: 'Task (Click for Google)',
-					url: 'http://google.com/',
-					type: 'task',
-					position: 6
-				},
-				{
-					title: 'Simple task',
-					type: 'task',
-					position: 0
-				},
-				{
-					title: 'Task with start time',
-					type: 'task',
-					allDay: false,
-					position: 1
-				},
-				{
-					title: 'Task (done)',
-					type: 'task',
-					done: true,
-					position: 2
-				},
-				{
-					title: 'Task (done) with start time / allday',
-					type: 'task',
-					allDay: true,
-					done: true,
-					position: 3
-				},
-				{
-					title: 'Task (canceled)',
-					type: 'task',
-					canceled: true,
-					position: 4
-				},
-				{
-					title: 'Task (done + canceled)',
-					type: 'task',
-					done: true,
-					canceled: true,
-					position: 5
-				},
-				{
-					title: 'Task (Click for Google)',
-					url: 'http://google.com/',
-					type: 'task',
-					position: 6
-				},
-				{
-					title: 'Simple task',
-					type: 'task',
-					position: 0
-				},
-				{
-					title: 'Task with start time',
-					type: 'task',
-					allDay: false,
-					position: 1
-				},
-				{
-					title: 'Task (done)',
-					type: 'task',
-					done: true,
-					position: 2
-				},
-				{
-					title: 'Task (done) with start time / allday',
-					type: 'task',
-					allDay: true,
-					done: true,
-					position: 3
-				},
-				{
-					title: 'Task (canceled)',
-					type: 'task',
-					canceled: true,
-					position: 4
-				},
-				{
-					title: 'Task (done + canceled)',
-					type: 'task',
-					done: true,
-					canceled: true,
-					position: 5
-				},
-				{
-					title: 'Task (Click for Google)',
-					url: 'http://google.com/',
-					type: 'task',
-					position: 6
-				},
-				{
-					title: 'Simple task',
-					type: 'task',
-					position: 0
-				},
-				{
-					title: 'Task with start time',
-					type: 'task',
-					allDay: false,
-					position: 1
-				},
-				{
-					title: 'Task (done)',
-					type: 'task',
-					done: true,
-					position: 2
-				},
-				{
-					title: 'Task (done) with start time / allday',
-					type: 'task',
-					allDay: true,
-					done: true,
-					position: 3
-				},
-				{
-					title: 'Task (canceled)',
-					type: 'task',
-					canceled: true,
-					position: 4
-				},
-				{
-					title: 'Task (done + canceled)',
-					type: 'task',
-					done: true,
-					canceled: true,
-					position: 5
-				},
-				{
-					title: 'Task (Click for Google)',
-					url: 'http://google.com/',
-					type: 'task',
-					position: 6
-				},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				}
 			],
 			eventClick: function(event, jsEvent, view) {
 				console.log('[eventClick] ' + view.name + ': ' + event.title);

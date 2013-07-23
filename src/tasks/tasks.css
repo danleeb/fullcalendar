@@ -89,5 +89,4 @@
     background-color:transparent;
 }
 
-.fc-tasks-list-container .ui-sortable-helper .fc-task-checkbox,
-.fc-tasks-list-container .ui-sortable-helper .fc-task-date { display:none; }
+.fc-tasks-list-container .ui-sortable-helper .fc-task-checkbox { display:none; }

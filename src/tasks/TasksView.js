@@ -15,7 +15,7 @@ function TasksListView(element, calendar) {
 
     function render(date, delta) {
         t.title = opt('tasksTitle');
-        t.start = null;
+        t.start = 1;
         t.end = null;
         t.visStart = null;
         t.visEnd = null;
@@ -81,7 +81,7 @@ function TasksList(element, calendar, viewName) {
             segmentContainer = $('<div class="fc-tasks-container"/>').appendTo(element);
         } else {
             actionContainer.show();
-            clearEvents(true);
+            clearEvents();
         }
     }
 
@@ -89,10 +89,11 @@ function TasksList(element, calendar, viewName) {
         var h = height - selectActionContainer.height();
         setMinHeight(segmentContainer, h);
         segmentContainer.height(h);
+        setOuterWidth(segmentContainer, 0);
     }
 
     function setWidth(width) {
-        setOuterWidth(element, width);
+        setOuterWidth(segmentContainer, width);
     }
 
     function renderSelectActions() {
@@ -112,8 +113,8 @@ function TasksList(element, calendar, viewName) {
                             event.indent--;
                         }
                     });
-                    rerenderEvents();
                     trigger('tasksIndentSub', calendar, getSelectedTasks());
+                    rerenderEvents();
                 });
         $(opt('taskSelectActionsText').indentAdd).appendTo(selectActionContainer)
             .on('click', function() {
@@ -124,8 +125,8 @@ function TasksList(element, calendar, viewName) {
                             event.indent++;
                         }
                     });
-                    rerenderEvents();
                     trigger('tasksIndentAdd', calendar, getSelectedTasks());
+                    rerenderEvents();
                 });
         $(opt('taskSelectActionsText').open).appendTo(selectActionContainer)
             .on('click', function() {
@@ -133,8 +134,8 @@ function TasksList(element, calendar, viewName) {
                         event.done = false;
                         event.canceled = false;
                     });
-                    rerenderEvents();
                     trigger('tasksUndone', calendar, getSelectedTasks());
+                    rerenderEvents();
                 });
         $(opt('taskSelectActionsText').done).appendTo(selectActionContainer)
             .on('click', function() {
@@ -142,8 +143,8 @@ function TasksList(element, calendar, viewName) {
                         event.done = true;
                         event.canceled = false;
                     });
-                    rerenderEvents();
                     trigger('tasksDone', calendar, getSelectedTasks());
+                    rerenderEvents();
                 });
         $(opt('taskSelectActionsText').cancel).appendTo(selectActionContainer)
             .on('click', function() {
@@ -151,8 +152,8 @@ function TasksList(element, calendar, viewName) {
                         event.done = false;
                         event.canceled = true;
                     });
-                    rerenderEvents();
                     trigger('tasksCancel', calendar, getSelectedTasks());
+                    rerenderEvents();
                 });
     }
 }

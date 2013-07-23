@@ -29,13 +29,9 @@ function TasksListEventRenderer() {
         renderTaskSegs(compileSegs(events), selectedTasks, modifiedEventId);
     }
 
-    function clearEvents(unselect) {
+    function clearEvents() {
         reportEventClear();
         getSegmentContainer().empty();
-        if (unselect === true) {
-            selectedTasks = [];
-            getActionContainer().removeClass('fc-tasks-select-actions-active');
-        }
     }
 
     function compileSegs(events) {
@@ -130,7 +126,7 @@ function TasksListViewEventRenderer() {
     function tasksSegHTML(segs, selectedTasks) {
         var i, j;
         var seg, segCnt = segs.length;
-        var sel = 0, selCnt = selectedTasks.length;
+        var newSelectedTasks = [];
         var event;
         var classes, taskClasses, timeClasses;
 
@@ -145,8 +141,15 @@ function TasksListViewEventRenderer() {
             timeClasses = ['fc-task-date'];
 
             var selected = (selectedTasks.indexOf(event) >= 0);
+            if (!selected) {
+                $.each(selectedTasks, function(index, ev) {
+                    if (ev.id && ev.id == event.id) {
+                        selected = true;
+                    }
+                });
+            }
             if (selected) {
-                sel++;
+                newSelectedTasks.push(event);
                 classes.push('fc-state-highlight')
             }
             taskClasses = taskClasses.concat(event.className);
@@ -206,8 +209,9 @@ function TasksListViewEventRenderer() {
 
         html += '</ul>';
 
-        if (sel < 1 && selCnt > 0) {
-            selectedTasks = [];
+        selectedTasks.length = 0;
+        selectedTasks.push.apply(selectedTasks, newSelectedTasks);
+        if (!selectedTasks.length) {
             getActionContainer().removeClass('fc-tasks-select-actions-active');
         }
 
