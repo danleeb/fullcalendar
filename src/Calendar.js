@@ -297,12 +297,12 @@ function Calendar(element, options, eventSources) {
 				var uid = ++resizeUID;
 				setTimeout(function() { // add a delay
 					if (uid == resizeUID && !ignoreWindowResize && elementVisible()) {
-						if (elementOuterWidth != (elementOuterWidth = element.outerWidth())) {
+						//if (elementOuterWidth != (elementOuterWidth = element.outerWidth())) {
 							ignoreWindowResize++; // in case the windowResize callback changes the height
 							updateSize();
 							currentView.trigger('windowResize', _element);
 							ignoreWindowResize--;
-						}
+						//}
 					}
 				}, 200);
 			}else{
