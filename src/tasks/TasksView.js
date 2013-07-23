@@ -5,9 +5,7 @@ function TasksListView(element, calendar) {
 
     // exports
     t.render = render;
-    t.fetchData = {
-        type: 'task'
-    };
+    t.fetchData = getFetchData;
 
     // imports
     TasksList.call(t, element, calendar, 'tasks');
@@ -16,20 +14,20 @@ function TasksListView(element, calendar) {
     var formatDate = calendar.formatDate;
 
     function render(date, delta) {
-        if (delta) {
-            addDays(date, delta);
-        }
-        var start = cloneDate(date, true);
-        var end = addDays(cloneDate(start, true), 1);
-        var visStart = cloneDate(start, true);
-        var visEnd =  addDays(cloneDate(end, true), opt('tasksListLimit'));
-
         t.title = opt('tasksTitle');
         t.start = null;
         t.end = null;
         t.visStart = null;
         t.visEnd = null;
         renderList();
+    }
+
+    function getFetchData() {
+        return {
+            type: 'task',
+            done: opt('tasksShowDone'),
+            canceled: opt('tasksShowCanceled')
+        };
     }
 }
 

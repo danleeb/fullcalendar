@@ -74,8 +74,10 @@ var defaults = {
 	// task view
     tasksTitle: 'Tasks',
     tasksCanceled: '[canceled]',
-    tasksListLimit: 100,
+    tasksListLimit: 0,
     tasksMaxIndent: 5,
+    tasksShowDone: true,
+    tasksShowCanceled: false,
     taskSelectActionsText: {
     	tasks: {
     		unselect: '<input type="checkbox" checked="checked"/>',

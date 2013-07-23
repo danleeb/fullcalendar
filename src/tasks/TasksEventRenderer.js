@@ -41,10 +41,17 @@ function TasksListEventRenderer() {
     function compileSegs(events) {
         var cnt = events.length,
             event, i,
-            segs = [];
-        for (i = 0; i < cnt && i < opt('tasksListLimit'); i++) {
+            segs = [],
+            optCnt = opt('tasksListLimit');
+        if (optCnt > 0 && cnt > optCnt) {
+            cnt = optCnt;
+        }
+        for (i = 0; i < cnt; i++) {
             event = events[i];
-            if (event.type === 'task') {
+            if (event.type === 'task'
+                && (opt('tasksShowDone') || !event.done)
+                && (opt('tasksShowCanceled') || !event.canceled)
+            ) {
                 segs.push({ event: event });
             }
         }
@@ -88,6 +95,8 @@ function TasksListEventRenderer() {
 
     function unselectAllTasks() {
         getSegmentContainer().find('.fc-task-checkbox input[type="checkbox"]:checked').trigger('click');
+        selectedTasks = [];
+        getActionContainer().removeClass('fc-tasks-select-actions-active');
     }
 }
 
@@ -104,6 +113,7 @@ function TasksListViewEventRenderer() {
     var getSegmentContainer = t.getSegmentContainer;
     var bindDaySeg = t.bindDaySeg;
     var formatDates = t.calendar.formatDates;
+    var getActionContainer = t.getActionContainer;
 
 
     function renderTaskSegs(segs, selectedTasks, modifiedEventId) {
@@ -120,6 +130,7 @@ function TasksListViewEventRenderer() {
     function tasksSegHTML(segs, selectedTasks) {
         var i, j;
         var seg, segCnt = segs.length;
+        var sel = 0, selCnt = selectedTasks.length;
         var event;
         var classes, taskClasses, timeClasses;
 
@@ -135,6 +146,7 @@ function TasksListViewEventRenderer() {
 
             var selected = (selectedTasks.indexOf(event) >= 0);
             if (selected) {
+                sel++;
                 classes.push('fc-state-highlight')
             }
             taskClasses = taskClasses.concat(event.className);
@@ -193,6 +205,11 @@ function TasksListViewEventRenderer() {
         }
 
         html += '</ul>';
+
+        if (sel < 1 && selCnt > 0) {
+            selectedTasks = [];
+            getActionContainer().removeClass('fc-tasks-select-actions-active');
+        }
 
         return html;
     }

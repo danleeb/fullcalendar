@@ -330,7 +330,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function refetchEvents() {
-		fetchEvents(currentView.visStart, currentView.visEnd, currentView.fetchData); // will call reportEvents
+		fetchEvents(currentView.visStart, currentView.visEnd, currentView.fetchData ? currentView.fetchData() : {}); // will call reportEvents
 	}
 	
 	
@@ -458,8 +458,8 @@ function Calendar(element, options, eventSources) {
 		if (value === undefined) {
 			return options[name];
 		}
+		options[name] = value;
 		if (name == 'height' || name == 'contentHeight' || name == 'aspectRatio') {
-			options[name] = value;
 			updateSize();
 		}
 	}
