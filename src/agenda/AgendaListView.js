@@ -12,6 +12,7 @@ function AgendaListView(element, calendar) {
     AgendaList.call(t, element, calendar, 'agenda');
     var opt = t.opt;
     var renderList = t.renderList;
+    var skipHiddenDays = t.skipHiddenDays;
     var formatDate = calendar.formatDate;
 
 
@@ -19,6 +20,8 @@ function AgendaListView(element, calendar) {
         if (delta) {
             addDays(date, delta);
         }
+        skipHiddenDays(date, delta < 0 ? -1 : 1);
+        
         var start = cloneDate(date, true);
         var end = addDays(cloneDate(start, true), 1);
         var visStart = cloneDate(start, true);
