@@ -27,6 +27,8 @@ function TasksListEventRenderer() {
     function renderEvents(events, modifiedEventId) {
         reportEvents(events);
         renderTaskSegs(compileSegs(events), selectedTasks, modifiedEventId);
+        
+        trigger('eventAfterAllRender');
     }
 
     function clearEvents() {
