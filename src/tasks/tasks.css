@@ -50,6 +50,7 @@
 	border-radius:3px;
 	padding:3px 0px;
 	border-top:1px solid #eee;
+    cursor:move;
 }
 .fc-tasks-list-container li > span {
 }
